@@ -10,12 +10,9 @@ export default function Home() {
   return (
     <Container
       maxWidth={false} 
+      disableGutters  
       sx={{
-        maxWidth: `70`,
-        mx: 'auto', 
         mt: '25px',
-        width: '100%',
-
       }}
     >
       <Navbar />

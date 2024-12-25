@@ -71,8 +71,8 @@ export default function Navbar() {
         boxShadow: 'none',
       }}
     >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+      <Container maxWidth="xl" >
+        <Toolbar >
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

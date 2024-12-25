@@ -9,7 +9,7 @@ const containerStyles = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  marginTop: '8em',
+  marginTop: '10em',
   display: 'flex',
   flexDirection: 'column',
   gap: '45px'
