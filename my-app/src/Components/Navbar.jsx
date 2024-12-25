@@ -9,7 +9,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import CustomButton from './CustomButton'; 
 import { styled } from '@mui/system';
+
 
 import logo from '../Assets/logo.png';
 import rightArrow from '../Assets/right-arrow.png'; 
@@ -130,18 +132,7 @@ export default function Navbar() {
             ))}
           </Box>
 
-          <ContactButton>
-            Contact me
-            <img
-              src={rightArrow}
-              alt="Right Arrow"
-              style={{
-                marginLeft: '8px', 
-                width: '10px',     
-                height: '16px',
-              }}
-            />
-          </ContactButton>
+          <CustomButton text="Contact Me" />
 
         </Toolbar>
       </Container>
