@@ -132,7 +132,7 @@ export default function Navbar() {
             ))}
           </Box>
 
-          <CustomButton text="Contact Me" />
+          <CustomButton text="Contact Me" variant="contained" />
 
         </Toolbar>
       </Container>

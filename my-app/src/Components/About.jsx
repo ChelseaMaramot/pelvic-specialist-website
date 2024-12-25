@@ -18,10 +18,8 @@ const subContainerStyle = {
   maxWidth: '90%',
   flexDirection: 'row',
   margin: '0 auto',
-
- alignItems: 'center'
+  alignItems: 'center',
 }
-
 
 const bodyStyles = {
   display: 'flex',
@@ -33,7 +31,7 @@ const bodyStyles = {
 const aboutHeadingStyles = {
   fontFamily: 'Montserrat, sans-serif', 
   fontWeight: 500,  
-  fontSize: '36px', 
+  fontSize: '1.5em', 
   letterSpacing: '0.075em',  
   color: '#8447E9',
   marginBottom: '1em',  
