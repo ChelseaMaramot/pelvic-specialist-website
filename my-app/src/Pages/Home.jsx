@@ -7,6 +7,7 @@ import Footer from '../Components/Footer';
 import { Container } from '@mui/material';
 import Conditions from './Conditions';
 import ConditionsTreated from '../Components/ConditionsTreated';
+import Services from '../Components/Services';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <About />
       <ConditionsTreated />
+      <Services></Services>
       <Contact />
       <Footer />
     </Container>

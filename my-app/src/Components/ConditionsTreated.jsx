@@ -22,7 +22,7 @@ export default function ConditionsTreated() {
       flexDirection: 'row',
       paddingTop: '2em',
       paddingBottom: '2em',
-      position: 'relative', // Make the container relative for absolute positioning
+      position: 'relative',
     },
     subContainerStyle: {
       display: 'flex',
@@ -81,7 +81,7 @@ export default function ConditionsTreated() {
       display: 'flex',
       position: 'absolute',
       bottom: '1em',
-      right: '1em', // Align to the right edge
+      right: '1em', 
     },
   };
 
