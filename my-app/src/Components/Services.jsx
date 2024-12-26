@@ -1,6 +1,7 @@
 import React from 'react';
 import accupunctureIcon from '../Assets/accupuncture.png';
 import exerciseIcon from '../Assets/exercise.png';
+import CustomButton from './CustomButton';
 
 
 const conditions = [
@@ -89,7 +90,14 @@ export default function Services() {
         letterSpacing: '-0.05em',  
         lineHeight: '25px', 
         margin: 0,
-    }
+    },
+    buttonContainer: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'flex-end',
+      marginTop: '20px', 
+    },
+    
 
 
   };
@@ -111,6 +119,9 @@ export default function Services() {
               </div>
         </div>
           ))}
+        </div>
+        <div style={styles.buttonContainer}>
+          <CustomButton text="Request an Appointment" variant="outlined" />
         </div>
       </div>
     </div>

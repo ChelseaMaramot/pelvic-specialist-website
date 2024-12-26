@@ -59,7 +59,6 @@ export default function ConditionsTreated() {
       gap: '2em',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: '3em',
     },
     card: {
       display: 'flex',
@@ -79,9 +78,9 @@ export default function ConditionsTreated() {
     },
     buttonContainer: {
       display: 'flex',
-      position: 'absolute',
-      bottom: '1em',
-      right: '1em', 
+      width: '100%',
+      justifyContent: 'flex-end',
+      marginTop: '20px', 
     },
   };
 

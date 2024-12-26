@@ -8,6 +8,7 @@ import { Container } from '@mui/material';
 import Conditions from './Conditions';
 import ConditionsTreated from '../Components/ConditionsTreated';
 import Services from '../Components/Services';
+import FAQ from '../Components/FAQ';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <About />
       <ConditionsTreated />
       <Services></Services>
+      <FAQ></FAQ>
       <Contact />
       <Footer />
     </Container>
