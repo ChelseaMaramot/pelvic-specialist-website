@@ -12,7 +12,6 @@ import MenuItem from '@mui/material/MenuItem';
 import CustomButton from './CustomButton'; 
 import { styled } from '@mui/system';
 
-
 import logo from '../Assets/logo.png';
 import rightArrow from '../Assets/right-arrow.png'; 
 
@@ -46,6 +45,43 @@ const ContactButton = styled(Button)(({ theme }) => ({
   borderRadius: 0,
 }));
 
+const navbarStyles = {
+  appBar: {
+    position: 'sticky',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)', 
+    boxShadow: 'none',
+    top: 0, 
+    zIndex: 1300, 
+    backdropFilter: 'blur(12px)',
+  },
+  container: {
+    maxWidth: 'xl',
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  box: {
+    flexGrow: 1,
+    display: { xs: 'flex', md: 'none' },
+  },
+  logo: {
+    height: '65px',
+  },
+  menuIcon: {
+    color: 'inherit',
+  },
+  menuItem: {
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    flexGrow: 1,
+    display: { xs: 'none', md: 'flex' },
+    justifyContent: 'center',
+  },
+};
+
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [selectedPage, setSelectedPage] = React.useState(pages[0]);
@@ -64,23 +100,17 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar 
-      position="static" 
-      sx={{ 
-        backgroundColor: 'white', 
-        boxShadow: 'none',
-      }}
-    >
-      <Container maxWidth="xl" >
-        <Toolbar >
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+    <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>
+      <Container maxWidth={navbarStyles.container.maxWidth}>
+        <Toolbar sx={navbarStyles.toolbar}>
+          <Box sx={navbarStyles.box}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={navbarStyles.menuIcon}
             >
               <MenuIcon />
             </IconButton>
@@ -102,7 +132,7 @@ export default function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handlePageSelect(page)}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  <Typography sx={navbarStyles.menuItem}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,17 +141,12 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Logo"
-            style={{
-              height: '65px',
-            }}
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              mr: 1,
-            }}
+            style={navbarStyles.logo}
+            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
           />
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {pages.map((page, index) => (
+          <Box sx={navbarStyles.buttonContainer}>
+            {pages.map((page) => (
               <StyledButton
                 key={page}
                 onClick={() => handlePageSelect(page)} 
@@ -133,7 +158,6 @@ export default function Navbar() {
           </Box>
 
           <CustomButton text="Contact Me" variant="contained" />
-
         </Toolbar>
       </Container>
     </AppBar>
