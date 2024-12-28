@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
-import { TextField, Button, Grid } from '@mui/material';
+import React, { useState, useEffect, useRef } from 'react';
+import { TextField, Grid } from '@mui/material';
+import CustomButton from './CustomButton';
 
 export default function Contact() {
+  const [mapHeight, setMapHeight] = useState(0);
+  const contactContainerRef = useRef(null);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,18 +14,20 @@ export default function Contact() {
     message: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  useEffect(() => {
+    // Update mapHeight when component mounts or contactContainerRef changes
+    const contactHeight = contactContainerRef.current ? contactContainerRef.current.offsetHeight : 0;
+    setMapHeight(contactHeight);
+    
+    // Optional: Recalculate map height on window resize if needed
+    const handleResize = () => {
+      const contactHeight = contactContainerRef.current ? contactContainerRef.current.offsetHeight : 0;
+      setMapHeight(contactHeight);
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize); // Clean up the event listener
+  }, []); // Runs only once when component mounts
 
   const styles = {
     containerStyles: {
@@ -80,6 +86,7 @@ export default function Contact() {
       width: '80%',
       borderRadius: '8px',
       border: '2px solid #ddd',
+      height: mapHeight, 
     },
     mapIframe: {
       width: '100%',
@@ -87,12 +94,14 @@ export default function Contact() {
       border: '0',
     },
     formContainer: {
-      marginTop: '2em',
+      marginTop: '4em',
+      marginLeft: '6.2em',
+      marginRight: '6.2em',
     },
     formField: {
       '& .MuiOutlinedInput-root': {
         '& fieldset': {
-          borderColor: '#8447E9', 
+          borderWidth: '1px', 
         },
         '&:hover fieldset': {
           borderColor: '#8447E9', 
@@ -100,9 +109,16 @@ export default function Contact() {
         '&.Mui-focused fieldset': {
           borderColor: '#8447E9', 
         },
+      },    
+      '& .MuiInputLabel-root': {
+        color: '#000',
+        '&.Mui-focused': {
+          color: '#8447E9',
+        },
       },
       marginBottom: '1.5em',
     },
+
     submitButton: {
       backgroundColor: '#8447E9',
       color: 'white',
@@ -112,6 +128,19 @@ export default function Contact() {
     },
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <div style={styles.containerStyles}>
       <div style={styles.subContainerStyle}>
@@ -119,7 +148,7 @@ export default function Contact() {
           <h2 style={styles.heading}>GET IN TOUCH</h2>
         </div>
 
-        <div style={styles.contactContainer}>
+        <div ref={contactContainerRef} style={styles.contactContainer}>
           <div style={styles.contactInfo}>
             <div style={styles.contactText}>
               <span style={styles.contactLabel}>Phone:</span><br />
@@ -160,7 +189,7 @@ export default function Contact() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  style={styles.formField}
+                  sx={styles.formField}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -171,7 +200,7 @@ export default function Contact() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  style={styles.formField}
+                  sx={styles.formField}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -182,7 +211,7 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  style={styles.formField}
+                  sx={styles.formField}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -193,7 +222,7 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  style={styles.formField}
+                  sx={styles.formField}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -206,18 +235,18 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  style={styles.formField}
+                  sx={styles.formField}
                 />
               </Grid>
             </Grid>
-            <Button
+           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2em' }}>
+            <CustomButton
               type="submit"
-              variant="contained"
-              fullWidth
-              style={styles.submitButton}
-            >
-              Send Message
-            </Button>
+              text={'Send Message'}
+              sx={styles.submitButton}
+            />
+          </div>
+
           </form>
         </div>
       </div>
