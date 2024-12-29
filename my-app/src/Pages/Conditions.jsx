@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { Container } from '@mui/material';
 import ConditionsContent from '../Components/ConditionsContent';
+import ConditionsHero from '../Components/ConditionsHero';
 
 export default function Conditions() {
   return (
@@ -14,6 +15,7 @@ export default function Conditions() {
     }}
   >
     <Navbar />
+    <ConditionsHero></ConditionsHero>
     <ConditionsContent></ConditionsContent>
     <Footer />
   </Container>

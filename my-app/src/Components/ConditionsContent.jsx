@@ -12,12 +12,13 @@ const containerStyles = {
   flexDirection: 'column',
   justifyContent: 'center', 
   alignItems: 'center', 
-  margin: '0 auto',    
+  margin: '50px auto',    
 }
 
 const descContainer = {
   textAlign: 'left',
-  margin: '2.5em',
+  letterSpacing: '0.7px',
+  lineHeight: '20px'
 };
 
 const listStyle = {
@@ -28,7 +29,7 @@ const listStyle = {
 const typeNameStyle = {
   color: '#8447E9',
   fontFamily: 'Montserrat, sans-serif',
-  fontSize: '0.9em',
+  fontSize: '0.8em',
   marginRight: '0.5rem',
   fontWeight: '600'
 };
@@ -37,22 +38,26 @@ const typeDescriptionStyle = {
   color: '#000000',
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: '500',
-  fontSize: '0.9em',
+  fontSize: '0.8em',
 };
 
 const titleStyle = {
-  fontSize: '1.5rem',
-  fontWeight: '600',
+  fontSize: '1.3rem',
+  fontWeight: '400',
   color: '#8447E9',
 };
 
 const descriptionStyle = {
   marginTop: '0.5rem',
+  fontSize: '0.8em',
+  fontWeight: '500',
 };
 
 const imageSize = {
-  width: '20em',
-  height: '20em',
+  width: '25em',
+  height: '25em',
+  margin: '2.5em',
+  objectFit: 'cover'
 };
 
 const flexContainer = {
