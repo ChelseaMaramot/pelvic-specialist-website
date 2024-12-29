@@ -26,7 +26,7 @@ const subContainerStyle = {
 const aboutHeadingStyles = {
   fontFamily: 'Montserrat, sans-serif', 
   fontWeight: 500,  
-  fontSize: 'clamp(1.2rem, 4vw, 2rem)',
+  fontSize: 'clamp(1.2rem, 4vw, 1.5em)',
   letterSpacing: '0.075em',  
   color: '#8447E9',
   marginBottom: '1em',  
@@ -37,7 +37,7 @@ const paragraphStyles = {
   flex: 1,  
   padding: '0 2em',  
   fontFamily: 'Montserrat, sans-serif',
-  fontSize: 'clamp(0.8rem, 3vw, 1.2rem)',
+  fontSize: 'clamp(0.8rem, 1em, 1.2rem)',
   letterSpacing: '-0.05em',  
   lineHeight: '1.6em',
   textAlign: 'left',

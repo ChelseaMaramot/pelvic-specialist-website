@@ -49,7 +49,7 @@ export default function Services() {
     icon: {
       width: '140px',
       height: 'auto',
-
+      margin: '0 auto',
     },
     label: {
       fontFamily: 'Montserrat, sans-serif',
@@ -80,17 +80,20 @@ export default function Services() {
         alignItems: 'center',
         textAlign: 'center',
         gap: '3em',
+        flexWrap: 'wrap'
       },
 
-    desc: {
-        width: '45em',
+      desc: {
+        width: '100%',  
+        maxWidth: '45em',
         textAlign: 'justify',
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: '21', 
-        letterSpacing: '-0.05em',  
-        lineHeight: '25px', 
+        fontSize: '1em', 
+        letterSpacing: '-0.05em',
+        lineHeight: '1.5',
         margin: 0,
-    },
+      },
+      
     buttonContainer: {
       display: 'flex',
       width: '100%',

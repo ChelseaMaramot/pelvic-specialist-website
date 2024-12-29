@@ -37,7 +37,7 @@ export default function ConditionsTreated() {
     heading: {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
-      fontSize: '1.5em',
+      fontSize: 'clamp(1.2rem, 1,5em, 1.5em)',
       letterSpacing: '0.075em',
       color: '#8447E9',
       marginBottom: '1em',
@@ -46,7 +46,7 @@ export default function ConditionsTreated() {
     subheading: {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
-      fontSize: '1em',
+      fontSize:  'clamp(0.5rem, 1em, 1 em)',
       color: '#000',
       marginBottom: '2em',
       textAlign: 'left',
