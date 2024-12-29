@@ -5,7 +5,7 @@ import '../Styles/wave.css';
 
 const containerStyles = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
   position: 'relative',
   backgroundColor: '#E1DBF6', 
   marginTop: '10em',
@@ -19,19 +19,14 @@ const subContainerStyle = {
   flexDirection: 'row',
   margin: '0 auto',
   alignItems: 'center',
+  justifyContent: 'center',
+  flexWrap: 'wrap', 
 }
-
-const bodyStyles = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-}
-
 
 const aboutHeadingStyles = {
   fontFamily: 'Montserrat, sans-serif', 
   fontWeight: 500,  
-  fontSize: '1.5em', 
+  fontSize: 'clamp(1.2rem, 4vw, 2rem)',
   letterSpacing: '0.075em',  
   color: '#8447E9',
   marginBottom: '1em',  
@@ -42,15 +37,16 @@ const paragraphStyles = {
   flex: 1,  
   padding: '0 2em',  
   fontFamily: 'Montserrat, sans-serif',
-  fontSize: '21', 
+  fontSize: 'clamp(0.8rem, 3vw, 1.2rem)',
   letterSpacing: '-0.05em',  
-  lineHeight: '25px', 
+  lineHeight: '1.6em',
   textAlign: 'left',
+  
 };
 
 const imageStyles = {
-  width: '279px',
-  height: '300px',
+  width: '18em',
+  height: '19rem',
   overflow: 'hidden',
   position: 'relative',
   borderRadius: '50%'
@@ -62,8 +58,6 @@ export default function About() {
   return (
     <div style={containerStyles}>
       <div style={subContainerStyle}>
-        <div style={bodyStyles}>
-          
           <div style={paragraphStyles}>
             <div style={aboutHeadingStyles} >ABOUT</div>
             <p>Sarah Masoomeh is a highly skilled physiotherapist with an international background,
@@ -92,11 +86,8 @@ export default function About() {
               }}
             />
           </div>
-        </div>
+          <div class="wavy-line wavy-line-purple" data-text="xxxxxxxxxxxxxxxxxxxxx"></div>
       </div>
-      <div class="wavy-line wavy-line-purple" data-text="xxxxxxxxxxxxxxxxxxxxx"></div>
     </div>
   )
-
-
 }
