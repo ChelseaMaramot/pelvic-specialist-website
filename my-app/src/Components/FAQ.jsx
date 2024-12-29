@@ -50,7 +50,7 @@ export default function FAQ() {
     heading: {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
-      fontSize: '1.5em',
+      fontSize: 'clamp(1.2em, 1.5em, 1.5em)',
       letterSpacing: '0.075em',
       color: '#8447E9',
       marginBottom: '1em',
@@ -67,13 +67,13 @@ export default function FAQ() {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 'bold',
       textAlign: 'left',
-      fontSize: '1.5em', 
+      fontSize: 'clamp(0.8em, 1.3em, 1.5em)',
       padding: '20px',
     },
     answerText: {
       fontFamily: 'Montserrat, sans-serif',
       textAlign: 'left',
-
+      fontSize:  'clamp(1em, 2.5vw, 1em)'
     },
     accordionSummary: {
       minHeight: '10px',
@@ -91,8 +91,9 @@ export default function FAQ() {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 'bold',
       color: '#9D96A8',
-      fontSize: '3em', 
+      fontSize: 'clamp(2em, 3em, 3em)',
       marginRight: '10px', 
+      
     },
     accordionContent: {
       display: 'flex',
