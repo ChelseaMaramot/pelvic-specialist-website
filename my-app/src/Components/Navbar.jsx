@@ -30,7 +30,7 @@ const StyledButton = styled(Button)(({ theme, selected }) => ({
   color: selected ? '#8447E9' : 'black',
   display: 'block',
   textTransform: 'none',
-  marginRight: theme.spacing(7), 
+  marginRight: theme.spacing(7),
 }));
 
 const ContactButton = styled(Button)(({ theme }) => ({
@@ -63,22 +63,34 @@ const navbarStyles = {
     alignItems: 'center',
   },
   box: {
-    flexGrow: 1,
+    flexGrow: 0,
     display: { xs: 'flex', md: 'none' },
+    alignItems: 'center', 
+    justifyContent: 'flex-end', 
   },
   logo: {
     height: '65px',
+    marginRight: '1.5rem', // Adjust this margin to control space between logo and items
   },
   menuIcon: {
-    color: 'inherit',
+    color: '#8447E9',
   },
   menuItem: {
     textAlign: 'center',
   },
   buttonContainer: {
-    flexGrow: 1,
     display: { xs: 'none', md: 'flex' },
     justifyContent: 'center',
+  },
+  logoBoxSmall: {
+    display: { xs: 'flex', md: 'none' }, // Display logo on small screens only
+    justifyContent: 'center', // Center logo on small screens
+    flexGrow: 1,
+  },
+  logoBoxLarge: {
+    display: { xs: 'none', md: 'flex' }, 
+    flexGrow: 0,
+    justifyContent: 'flex-start',
   },
 };
 
@@ -103,6 +115,14 @@ export default function Navbar() {
     <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>
       <Container maxWidth={navbarStyles.container.maxWidth}>
         <Toolbar sx={navbarStyles.toolbar}>
+        <Box sx={navbarStyles.logoBoxLarge}>
+            <img
+              src={logo}
+              alt="Logo"
+              style={navbarStyles.logo}
+            />
+          </Box>
+
           <Box sx={navbarStyles.box}>
             <IconButton
               size="large"
@@ -128,7 +148,6 @@ export default function Navbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handlePageSelect(page)}>
@@ -138,12 +157,13 @@ export default function Navbar() {
             </Menu>
           </Box>
 
-          <img
-            src={logo}
-            alt="Logo"
-            style={navbarStyles.logo}
-            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-          />
+          <Box sx={navbarStyles.logoBoxSmall}>
+            <img
+              src={logo}
+              alt="Logo"
+              style={navbarStyles.logo}
+            />
+          </Box>
 
           <Box sx={navbarStyles.buttonContainer}>
             {pages.map((page) => (
@@ -156,7 +176,6 @@ export default function Navbar() {
               </StyledButton>
             ))}
           </Box>
-
           <CustomButton text="Contact Me" variant="contained" />
         </Toolbar>
       </Container>

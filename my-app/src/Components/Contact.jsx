@@ -15,7 +15,6 @@ export default function Contact() {
   });
 
   useEffect(() => {
-    // Update mapHeight when component mounts or contactContainerRef changes
     const contactHeight = contactContainerRef.current ? contactContainerRef.current.offsetHeight : 0;
     setMapHeight(contactHeight);
     

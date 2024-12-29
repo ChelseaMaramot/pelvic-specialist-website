@@ -46,7 +46,11 @@ const CustomButton = ({ text, onClick, variant = 'contained' }) => {
   return (
     <Button
       variant={variant}
-      sx={buttonStyles}
+      sx={{
+        ...buttonStyles,
+        fontSize: { xs: '12px', md: '16px' }, 
+        padding: { xs: '6px 12px', md: '8px 16px' }, 
+      }}
       onClick={onClick}
     >
       {text}
