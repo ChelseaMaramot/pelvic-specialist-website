@@ -1,5 +1,4 @@
 import React from 'react'
-
 import masi from '../Assets/masi.jpg';
 import '../Styles/wave.css';
 
