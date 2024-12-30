@@ -68,7 +68,7 @@ export default function FAQ() {
       fontWeight: 'bold',
       textAlign: 'left',
       fontSize: 'clamp(0.8em, 1.3em, 1.5em)',
-      padding: '20px',
+      padding: '60px',
     },
     answerText: {
       fontFamily: 'Montserrat, sans-serif',
@@ -118,8 +118,8 @@ export default function FAQ() {
               style={styles.accordion(isOpen)}
               expanded={isOpen}
               onChange={handleChange(index)}
-              square // Ensures sharp rectangle edges
-              disableGutters // Removes default MUI padding/margin
+              square 
+              disableGutters 
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

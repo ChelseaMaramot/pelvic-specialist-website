@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,11 +9,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import CustomButton from './CustomButton'; 
+import CustomButton from './CustomButton';
 import { styled } from '@mui/system';
 
 import logo from '../Assets/logo.png';
-import rightArrow from '../Assets/right-arrow.png'; 
 
 const pages = ['Home', 'About', 'Services', 'FAQ', 'Location'];
 
@@ -33,25 +32,13 @@ const StyledButton = styled(Button)(({ theme, selected }) => ({
   marginRight: theme.spacing(7),
 }));
 
-const ContactButton = styled(Button)(({ theme }) => ({
-  ...fontStyles,
-  backgroundColor: '#8447E9',
-  color: 'white',
-  padding: '8px 16px',
-  '&:hover': {
-    backgroundColor: '#6e39c2',
-  },
-  textTransform: 'none',
-  borderRadius: 0,
-}));
-
 const navbarStyles = {
   appBar: {
     position: 'sticky',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)', 
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     boxShadow: 'none',
-    top: 0, 
-    zIndex: 1300, 
+    top: 0,
+    zIndex: 1300,
     backdropFilter: 'blur(12px)',
   },
   container: {
@@ -65,12 +52,12 @@ const navbarStyles = {
   box: {
     flexGrow: 0,
     display: { xs: 'flex', md: 'none' },
-    alignItems: 'center', 
-    justifyContent: 'flex-end', 
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   logo: {
     height: '65px',
-    marginRight: '1.5rem', 
+    marginRight: '1.5rem',
   },
   menuIcon: {
     color: '#8447E9',
@@ -88,7 +75,7 @@ const navbarStyles = {
     flexGrow: 1,
   },
   logoBoxLarge: {
-    display: { xs: 'none', md: 'flex' }, 
+    display: { xs: 'none', md: 'flex' },
     flexGrow: 0,
     justifyContent: 'flex-start',
   },
@@ -97,6 +84,34 @@ const navbarStyles = {
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [selectedPage, setSelectedPage] = React.useState(pages[0]);
+
+  useEffect(() => {
+    const sections = pages.map((page) => document.getElementById(page.toLowerCase()));
+    const options = {
+      root: null,
+      rootMargin: '-50px',
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const pageName = entry.target.id.charAt(0).toUpperCase() + entry.target.id.slice(1);
+          setSelectedPage(pageName);
+        }
+      });
+    }, options);
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -110,27 +125,22 @@ export default function Navbar() {
     setSelectedPage(page);
     handleCloseNavMenu();
 
-
     const element = document.getElementById(page.toLowerCase());
     if (element) {
       const navbarHeight = document.querySelector('header').offsetHeight || 0;
-      window.scrollTo({ // add offset
-        top: element.offsetTop - navbarHeight,  
+      window.scrollTo({
+        top: element.offsetTop - navbarHeight,
         behavior: 'smooth',
       });
     }
-  }
+  };
 
   return (
     <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>
       <Container maxWidth={navbarStyles.container.maxWidth}>
         <Toolbar sx={navbarStyles.toolbar}>
-        <Box sx={navbarStyles.logoBoxLarge}>
-            <img
-              src={logo}
-              alt="Logo"
-              style={navbarStyles.logo}
-            />
+          <Box sx={navbarStyles.logoBoxLarge}>
+            <img src={logo} alt="Logo" style={navbarStyles.logo} />
           </Box>
 
           <Box sx={navbarStyles.box}>
@@ -168,18 +178,14 @@ export default function Navbar() {
           </Box>
 
           <Box sx={navbarStyles.logoBoxSmall}>
-            <img
-              src={logo}
-              alt="Logo"
-              style={navbarStyles.logo}
-            />
+            <img src={logo} alt="Logo" style={navbarStyles.logo} />
           </Box>
 
           <Box sx={navbarStyles.buttonContainer}>
             {pages.map((page) => (
               <StyledButton
                 key={page}
-                onClick={() => handlePageSelect(page)} 
+                onClick={() => handlePageSelect(page)}
                 selected={selectedPage === page}
               >
                 {page}
