@@ -44,7 +44,7 @@ const buttonContainerStyles = {
 
 export default function Hero() {
   return (
-    <div style={containerStyles}>
+    <div id="home" style={containerStyles}>
       <div style={mainTextStyles}>
         Empowering 
         <span style={highlightedWordStyles}> Individuals </span>

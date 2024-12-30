@@ -15,7 +15,7 @@ import { styled } from '@mui/system';
 import logo from '../Assets/logo.png';
 import rightArrow from '../Assets/right-arrow.png'; 
 
-const pages = ['Home', 'About', 'Services', 'Location'];
+const pages = ['Home', 'About', 'Services', 'FAQ', 'Location'];
 
 const fontStyles = {
   fontFamily: 'Montserrat, sans-serif',
@@ -70,7 +70,7 @@ const navbarStyles = {
   },
   logo: {
     height: '65px',
-    marginRight: '1.5rem', // Adjust this margin to control space between logo and items
+    marginRight: '1.5rem', 
   },
   menuIcon: {
     color: '#8447E9',
@@ -83,8 +83,8 @@ const navbarStyles = {
     justifyContent: 'center',
   },
   logoBoxSmall: {
-    display: { xs: 'flex', md: 'none' }, // Display logo on small screens only
-    justifyContent: 'center', // Center logo on small screens
+    display: { xs: 'flex', md: 'none' },
+    justifyContent: 'center',
     flexGrow: 1,
   },
   logoBoxLarge: {
@@ -109,7 +109,17 @@ export default function Navbar() {
   const handlePageSelect = (page) => {
     setSelectedPage(page);
     handleCloseNavMenu();
-  };
+
+
+    const element = document.getElementById(page.toLowerCase());
+    if (element) {
+      const navbarHeight = document.querySelector('header').offsetHeight || 0;
+      window.scrollTo({ // add offset
+        top: element.offsetTop - navbarHeight,  
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return (
     <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>

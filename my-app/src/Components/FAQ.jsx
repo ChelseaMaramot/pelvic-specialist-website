@@ -105,7 +105,7 @@ export default function FAQ() {
   };
 
   return (
-    <div style={styles.containerStyles}>
+    <div id="faq" style={styles.containerStyles}>
       <div style={styles.subContainerStyle}>
         <div style={styles.headingContainer}>
           <h2 style={styles.heading}>FREQUENTLY ASKED QUESTIONS</h2>

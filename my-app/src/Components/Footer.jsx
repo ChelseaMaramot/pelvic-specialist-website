@@ -102,7 +102,7 @@ export default function Footer() {
               Services
             </a>
             <a href="#location" style={linkStyles}>
-              Location
+              FAQ
             </a>
             <a href="#contact" style={linkStyles}>
               Contact

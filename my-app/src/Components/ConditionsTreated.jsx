@@ -99,7 +99,7 @@ export default function ConditionsTreated() {
   };
 
   return (
-    <div style={styles.containerStyles}>
+    <div id="services" style={styles.containerStyles}>
       <div style={styles.subContainerStyle}>
         <div style={styles.headingContainer}>
           <h2 style={styles.heading}>PELVIC CONDITIONS TREATED</h2>

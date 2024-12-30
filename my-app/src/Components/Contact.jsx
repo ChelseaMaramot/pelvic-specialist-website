@@ -143,7 +143,7 @@ export default function Contact() {
   };
 
   return (
-    <div style={styles.containerStyles}>
+    <div id="location" style={styles.containerStyles}>
       <div style={styles.subContainerStyle}>
         <div style={styles.headingContainer}>
           <h2 style={styles.heading}>GET IN TOUCH</h2>

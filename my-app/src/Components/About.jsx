@@ -56,7 +56,7 @@ const imageStyles = {
 
 export default function About() {
   return (
-    <div style={containerStyles}>
+    <div  id= "about" style={containerStyles}>
       <div style={subContainerStyle}>
           <div style={paragraphStyles}>
             <div style={aboutHeadingStyles} >ABOUT</div>
