@@ -59,7 +59,6 @@ const linkStyles = {
   fontWeight: 400,
 };
 
-
 const paragraphStyles = {
   fontSize: '0.9em'
 };
@@ -68,15 +67,34 @@ const contactInfoStyles = {
   margin: '0',
 };
 
-
 export default function Footer() {
+  // Navigation links
+  const navLinks = [
+    { label: "Home", id: "Home" },
+    { label: "About", id: "About" },
+    { label: "Services", id: "Services" },
+    { label: "FAQ", id: "FAQ" },
+    { label: "Contact", id: "Contact" },
+  ];
+
+  const handlePageSelect = (page) => {
+    const element = document.getElementById(page.toLowerCase());
+    if (element) {
+      const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
+      window.scrollTo({
+        top: element.offsetTop - navbarHeight, 
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <footer style={footerStyles}>
       <div style={curvedDivStyles}></div>
 
       <div style={footerContentStyles}>
         <div style={sectionStyles}>
-          <img src={logo} alt="Pearl Logo" style={{  width: window.innerWidth <= 600 ? "100px" : "150px" }} />
+          <img src={logo} alt="Pearl Logo" style={{ width: window.innerWidth <= 600 ? "100px" : "150px" }} />
         </div>
 
         <div style={infoSectionStyles}>
@@ -92,21 +110,19 @@ export default function Footer() {
 
         <div style={navStyles}>
           <nav>
-            <a href="#home" style={linkStyles}>
-              Home
-            </a>
-            <a href="#about" style={linkStyles}>
-              About
-            </a>
-            <a href="#services" style={linkStyles}>
-              Services
-            </a>
-            <a href="#location" style={linkStyles}>
-              FAQ
-            </a>
-            <a href="#contact" style={linkStyles}>
-              Contact
-            </a>
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id.toLowerCase()}`}
+                style={linkStyles}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePageSelect(link.id);
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
         </div>
       </div>
