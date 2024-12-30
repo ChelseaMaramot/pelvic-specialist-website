@@ -58,6 +58,7 @@ const navbarStyles = {
   logo: {
     height: '65px',
     marginRight: '1.5rem',
+    cursor: 'pointer'
   },
   menuIcon: {
     color: '#8447E9',
@@ -135,12 +136,24 @@ export default function Navbar() {
     }
   };
 
+  const handleLogoClick = () => {
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+      const navbarHeight = document.querySelector('header').offsetHeight || 0;
+      window.scrollTo({
+        top: homeSection.offsetTop - navbarHeight - 500,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+
   return (
     <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>
       <Container maxWidth={navbarStyles.container.maxWidth}>
         <Toolbar sx={navbarStyles.toolbar}>
           <Box sx={navbarStyles.logoBoxLarge}>
-            <img src={logo} alt="Logo" style={navbarStyles.logo} />
+            <img src={logo} alt="Logo" style={navbarStyles.logo}  onClick={handleLogoClick} />
           </Box>
 
           <Box sx={navbarStyles.box}>
