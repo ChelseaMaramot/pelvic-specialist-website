@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TextField, Grid } from '@mui/material';
+import { TextField, Grid, Box } from '@mui/material';
 import CustomButton from './CustomButton';
 
 export default function Contact() {
@@ -18,15 +18,14 @@ export default function Contact() {
     const contactHeight = contactContainerRef.current ? contactContainerRef.current.offsetHeight : 0;
     setMapHeight(contactHeight);
     
-    // Optional: Recalculate map height on window resize if needed
     const handleResize = () => {
       const contactHeight = contactContainerRef.current ? contactContainerRef.current.offsetHeight : 0;
       setMapHeight(contactHeight);
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize); // Clean up the event listener
-  }, []); // Runs only once when component mounts
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); 
 
   const styles = {
     containerStyles: {
@@ -49,7 +48,7 @@ export default function Contact() {
     heading: {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
-      fontSize: '1.5em',
+      fontSize: 'clamp(1.2rem, 4vw, 1.5em)',
       letterSpacing: '0.075em',
       color: '#8447E9',
       marginBottom: '1em',
@@ -57,18 +56,19 @@ export default function Contact() {
     },
     contactContainer: {
       display: 'flex',
+      flexDirection: 'row',
       justifyContent: 'space-between',
-      alignItems: 'flex-start',
       gap: '5px',
       textAlign: 'left',
-      marginLeft: '6.2em',
-      marginRight: '6.2em',
+      marginRight: {xs: 0, md:'6.2em'},
     },
     contactInfo: {
       display: 'flex',
       flexDirection: 'column',
       gap: '1em',
       width: '50%',
+      marginLeft: '6.2em',
+      marginBottom: '2em'
     },
     contactText: {
       fontFamily: 'Montserrat, sans-serif',
@@ -80,12 +80,14 @@ export default function Contact() {
       fontWeight: 600,
       fontSize: '1.3em',
       color: '#8447E9',
+      marginBottom: '0.5em',
     },
     mapContainer: {
       width: '80%',
       borderRadius: '8px',
       border: '2px solid #ddd',
-      height: mapHeight, 
+      height: '20em', 
+      margin: '0 auto'
     },
     mapIframe: {
       width: '100%',
@@ -93,7 +95,7 @@ export default function Contact() {
       border: '0',
     },
     formContainer: {
-      marginTop: '4em',
+      marginTop: '3em',
       marginLeft: '6.2em',
       marginRight: '6.2em',
     },
@@ -115,7 +117,7 @@ export default function Contact() {
           color: '#8447E9',
         },
       },
-      marginBottom: '1.5em',
+      marginBottom: '0.5em',
     },
 
     submitButton: {
@@ -147,25 +149,25 @@ export default function Contact() {
           <h2 style={styles.heading}>GET IN TOUCH</h2>
         </div>
 
-        <div ref={contactContainerRef} style={styles.contactContainer}>
+        <Box ref={contactContainerRef} sx={{...styles.contactContainer, flexDirection: { xs: 'column', md: 'row' }, }}>
           <div style={styles.contactInfo}>
-            <div style={styles.contactText}>
-              <span style={styles.contactLabel}>Phone:</span><br />
+            <Box sx={{...styles.contactText, textAlign: { xs: 'center', md: 'left' }}}>
+              <div style={styles.contactLabel}>Phone:</div>
               NR: 905-3853338<br />
               Cell: 289-4890914
-            </div>
-            <div style={styles.contactText}>
-              <span style={styles.contactLabel}>Email:</span><br />
+            </Box>
+            <Box sx={{...styles.contactText, textAlign: { xs: 'center', md: 'left' }}}>
+              <div style={styles.contactLabel}>Email:</div>
               pearlpelvicphysio@gmail.com
-            </div>
-            <div style={styles.contactText}>
-              <span style={styles.contactLabel}>Address:</span><br />
+            </Box>
+            <Box sx={{...styles.contactText, textAlign: { xs: 'center', md: 'left' }}}>
+              <div style={styles.contactLabel}>Address:</div>
               Mountain Wellness Centre<br />
               437 Concession St, Hamilton ON
-            </div>
+            </Box>
           </div>
 
-          <div style={styles.mapContainer}>
+          <Box sx={styles.mapContainer}>
             <iframe
               style={styles.mapIframe}
               src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=437%20Concession%20St,%20Hamilton%20ON+(Mountain%20Wellness%20Centre)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
@@ -174,10 +176,10 @@ export default function Contact() {
               marginHeight="0"
               marginWidth="0"
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
 
-        <div style={styles.formContainer}>
+        <Box style={styles.formContainer}>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -238,7 +240,8 @@ export default function Contact() {
                 />
               </Grid>
             </Grid>
-           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2em' }}>
+
+           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1em' }}>
             <CustomButton
               type="submit"
               text={'Send Message'}
@@ -247,7 +250,7 @@ export default function Contact() {
           </div>
 
           </form>
-        </div>
+        </Box>
       </div>
     </div>
   );
