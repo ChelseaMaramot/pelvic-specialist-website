@@ -126,7 +126,7 @@ export default function Services() {
           ))}
         </div>
         <div style={styles.buttonContainer}>
-          <CustomButton text="Request an Appointment" variant="outlined" onClick={handleAppointmentClick}/>
+          <CustomButton text="Request an Appointment" variant="contained" onClick={handleAppointmentClick}/>
         </div>
       </div>
     </div>
