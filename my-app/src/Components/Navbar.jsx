@@ -147,6 +147,17 @@ export default function Navbar() {
     }
   };
 
+  const handleContactClick = () => {
+    const locationSection = document.getElementById('location');
+    if (locationSection) {
+      const navbarHeight = document.querySelector('header').offsetHeight || 0;
+      window.scrollTo({
+        top: locationSection.offsetTop - navbarHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
+
 
   return (
     <AppBar position={navbarStyles.appBar.position} sx={navbarStyles.appBar}>
@@ -191,7 +202,7 @@ export default function Navbar() {
           </Box>
 
           <Box sx={navbarStyles.logoBoxSmall}>
-            <img src={logo} alt="Logo" style={navbarStyles.logo} />
+          <img src={logo} alt="Logo" style={navbarStyles.logo}  onClick={handleLogoClick} />
           </Box>
 
           <Box sx={navbarStyles.buttonContainer}>
@@ -205,7 +216,7 @@ export default function Navbar() {
               </StyledButton>
             ))}
           </Box>
-          <CustomButton text="Contact Me" variant="contained" />
+          <CustomButton text="Contact Me" variant="contained" onClick={handleContactClick} />
         </Toolbar>
       </Container>
     </AppBar>
