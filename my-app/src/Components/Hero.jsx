@@ -7,17 +7,18 @@ const containerStyles = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  marginTop: '5em',
+  marginTop: '10em',
   display: 'flex',
   flexDirection: 'column',
-  gap: '2em', 
+  gap: '1em', 
   padding: '0 1rem', 
+  paddingBottom: '5em',
 };
 
 const mainTextStyles = {
   fontFamily: 'Epilogue, sans-serif',
   fontWeight: 700,
-  fontSize: 'clamp(2rem, 5vw, 4.75rem)', 
+  fontSize: 'clamp(3rem, 5vw, 4.75rem)', 
   letterSpacing: '-2%',
   lineHeight: '1.2', 
 };
@@ -25,7 +26,7 @@ const mainTextStyles = {
 const subTextStyles = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
-  fontSize: 'clamp(0.9rem, 2.5vw, 1.5rem)', 
+  fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', 
   letterSpacing: '-1%',
   textAlign: 'center',
   maxWidth: '70%',
@@ -34,6 +35,12 @@ const subTextStyles = {
 const highlightedWordStyles = {
   color: '#8447E9',
 };
+const buttonContainerStyles = {
+  display: 'flex',
+  justifyContent: 'center', 
+  marginTop: '2.2em', 
+};
+
 
 export default function Hero() {
   return (
@@ -46,7 +53,9 @@ export default function Hero() {
       <div style={subTextStyles}>
         Compassionate care for pelvic floor conditions, helping you regain confidence and live pain free
       </div>
-      <CustomButton text={'Request an Appointment'} />
+      <div style={buttonContainerStyles}>
+        <CustomButton text={'Request an Appointment'} />
+      </div>
     </div>
   );
 }
