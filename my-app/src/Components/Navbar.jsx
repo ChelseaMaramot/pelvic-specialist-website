@@ -86,6 +86,26 @@ export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [selectedPage, setSelectedPage] = React.useState(pages[0]);
 
+  // to automatically scroll from other page if hash available
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      scrollToSection(hash);
+    }
+  }, [window.location.hash]); 
+
+  const scrollToSection = (hash) => {
+    const sectionId = hash.replace('#', '').toLowerCase();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = document.querySelector('header').offsetHeight || 0;
+      window.scrollTo({
+        top: element.offsetTop - navbarHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   useEffect(() => {
     const sections = pages.map((page) => document.getElementById(page.toLowerCase()));
     const options = {
@@ -126,13 +146,18 @@ export default function Navbar() {
     setSelectedPage(page);
     handleCloseNavMenu();
 
-    const element = document.getElementById(page.toLowerCase());
+    const sectionId = page.toLowerCase();
+    window.location.hash = sectionId;
+
+    const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = document.querySelector('header').offsetHeight || 0;
       window.scrollTo({
         top: element.offsetTop - navbarHeight,
         behavior: 'smooth',
       });
+    }else if (window.location.pathname === '/conditions') {
+        window.location.href = `/#${sectionId}`
     }
   };
 

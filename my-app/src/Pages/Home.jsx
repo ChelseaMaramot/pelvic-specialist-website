@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Components/Navbar';
 import Hero from '../Components/Hero';
 import About from '../Components/About';
@@ -11,6 +11,8 @@ import Services from '../Components/Services';
 import FAQ from '../Components/FAQ';
 
 export default function Home() {
+
+  
   return (
     <Container
       maxWidth={false} 
