@@ -100,9 +100,11 @@ export default function Services() {
       justifyContent: 'center',
       marginTop: '20px', 
     },
-    
+  
+  };
 
-
+  const handleAppointmentClick = () => {
+    window.location.href = 'https://pearlpelvicphysio.janeapp.com/#staff_member/1';
   };
 
   return (
@@ -124,7 +126,7 @@ export default function Services() {
           ))}
         </div>
         <div style={styles.buttonContainer}>
-          <CustomButton text="Request an Appointment" variant="outlined" />
+          <CustomButton text="Request an Appointment" variant="outlined" onClick={handleAppointmentClick}/>
         </div>
       </div>
     </div>

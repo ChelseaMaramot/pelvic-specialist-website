@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';  // Import Link to handle navigation
 
 const containerStyles = {
   backgroundColor: '#E1DBF6',
@@ -30,9 +31,35 @@ const descriptionStyles = {
   letterSpacing: '1px',
 };
 
+const breadcrumbContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: 'Montserrat, sans-serif',
+  fontSize: '0.9em',
+  color: '#8447E9',
+  marginBottom: '1.5em',
+};
+
+const breadcrumbItem = {
+  marginRight: '5px',
+};
+
+const arrowStyle = {
+  marginRight: '5px',
+};
+
 export default function ConditionsHero() {
   return (
     <div style={containerStyles}>
+      <div style={breadcrumbContainer}>
+        <Link to="/" style={breadcrumbItem}>
+          Home
+        </Link>
+        <span style={arrowStyle}>&gt;&gt;</span>
+        <span style={breadcrumbItem}>Learn More About Pelvic Conditions</span>
+      </div>
+
       <div style={titleStyles}>
         PELVIC CONDITIONS TREATED
       </div>

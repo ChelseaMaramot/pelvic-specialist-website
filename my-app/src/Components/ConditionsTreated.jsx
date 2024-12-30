@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {  useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import IncontinenceIcon from '../Assets/incontinence.png';
 import ProlapseIcon from '../Assets/prolapse.png';
@@ -17,6 +18,7 @@ const conditions = [
 
 export default function ConditionsTreated() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,6 +100,12 @@ export default function ConditionsTreated() {
     },
   };
 
+  const handleButtonClick = () => {
+    window.scrollTo(0, 0);
+    navigate('/conditions');
+  };
+
+
   return (
     <div id="services" style={styles.containerStyles}>
       <div style={styles.subContainerStyle}>
@@ -116,7 +124,7 @@ export default function ConditionsTreated() {
           ))}
         </div>
         <div style={styles.buttonContainer}>
-          <CustomButton text="Learn more" variant="outlined" />
+          <CustomButton text="Learn more" variant="outlined" onClick={handleButtonClick}/>
         </div>
       </div>
     </div>
