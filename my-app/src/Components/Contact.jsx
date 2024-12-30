@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TextField, Grid, Box } from '@mui/material';
 import CustomButton from './CustomButton';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+  const emailServiceId = process.env.REACT_APP_EMAIL_SERVICE_ID;
+  const emailTemplateId = process.env.REACT_APP_EMAIL_TEMPLATE_ID;
+  const userId = process.env.REACT_APP_USER_ID;
+
   const [mapHeight, setMapHeight] = useState(0);
   const contactContainerRef = useRef(null);
 
@@ -139,7 +144,24 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    emailjs
+    .sendForm(
+      emailServiceId,   
+      emailTemplateId, 
+      e.target,                                   
+      userId
+    )
+    .then(
+      (result) => {
+        console.log('Message sent successfully:', result.text);
+        alert('Message sent successfully!');
+      },
+      (error) => {
+        console.log('Error sending message:', error.text);
+        alert('Failed to send message. Please try again.');
+      }
+    );
   };
 
   return (
