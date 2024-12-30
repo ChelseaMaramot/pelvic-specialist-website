@@ -41,6 +41,9 @@ const buttonContainerStyles = {
   marginTop: '2.2em', 
 };
 
+const handleAppointmentClick = () => {
+  window.location.href = 'https://pearlpelvicphysio.janeapp.com/#staff_member/1';
+};
 
 export default function Hero() {
   return (
@@ -54,7 +57,7 @@ export default function Hero() {
         Compassionate care for pelvic floor conditions, helping you regain confidence and live pain free
       </div>
       <div style={buttonContainerStyles}>
-        <CustomButton text={'Request an Appointment'} />
+        <CustomButton text={'Request an Appointment'} onClick={handleAppointmentClick}/>
       </div>
     </div>
   );
