@@ -13,7 +13,7 @@ const conditions = [
   { id: 2, icon: ProlapseIcon, label: 'Pelvic Organ Prolapse' },
   { id: 3, icon: VaginismusIcon, label: 'Vaginismus' },
   { id: 4, icon: DiastasisIcon, label: 'Diastasis Rectus Abdominis' },
-  { id: 5, icon: BackPainIcon, label: 'Pregnancy related hip and lower back pain' },
+  { id: 5, icon: BackPainIcon, label: 'Pregnancy Related Hip and Lower Back Pain' },
 ];
 
 export default function ConditionsTreated() {
