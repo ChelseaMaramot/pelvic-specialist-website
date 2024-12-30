@@ -97,7 +97,7 @@ export default function Services() {
     buttonContainer: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'flex-end',
+      justifyContent: 'center',
       marginTop: '20px', 
     },
     

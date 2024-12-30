@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import IncontinenceIcon from '../Assets/incontinence.png';
 import ProlapseIcon from '../Assets/prolapse.png';
@@ -16,6 +16,20 @@ const conditions = [
 ];
 
 export default function ConditionsTreated() {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); 
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const styles = {
     containerStyles: {
       display: 'flex',
@@ -46,16 +60,16 @@ export default function ConditionsTreated() {
     subheading: {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
-      fontSize:  'clamp(0.5rem, 1em, 1 em)',
+      fontSize: 'clamp(0.5rem, 1em, 1 em)',
       color: '#000',
       marginBottom: '2em',
-      textAlign: 'left',
+      textAlign: isSmallScreen ? 'center' : 'left',
       letterSpacing: '-4%',
-      maxWidth: '35%',
+      maxWidth: isSmallScreen ? '100%' : '35%',
     },
     grid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateColumns: isSmallScreen ? '1fr' : 'repeat(3, 1fr)', 
       gap: '2em',
       justifyContent: 'center',
       alignItems: 'center',
@@ -69,7 +83,7 @@ export default function ConditionsTreated() {
     icon: {
       width: '130px',
       height: 'auto',
-      marginBottom: '1em',
+      marginBottom: '0.5em',
     },
     label: {
       fontFamily: 'Montserrat, sans-serif',
@@ -79,7 +93,7 @@ export default function ConditionsTreated() {
     buttonContainer: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'flex-end',
+      justifyContent: 'center',
       marginTop: '20px', 
     },
   };
