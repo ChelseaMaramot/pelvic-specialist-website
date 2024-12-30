@@ -27,7 +27,7 @@ const descriptionStyles = {
   textAlign: 'center',
   width: '65%',
   margin: '0 auto',
-  letterSpacing: '1px' 
+  letterSpacing: '1px',
 };
 
 export default function ConditionsHero() {

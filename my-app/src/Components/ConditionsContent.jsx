@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import incontinenceImage from "../Assets/incontinenceImage.jpg";
 import prolapseImage from "../Assets/prolapseImage.png";
 import diastasisImage from "../Assets/diastisImage.png";
 import backPainImage from "../Assets/backPainImage.jpg";
-
 
 const containerStyles = {
   width: '70%',
@@ -53,19 +52,13 @@ const descriptionStyle = {
   fontWeight: '500',
 };
 
-const imageSize = {
-  width: '25em',
-  height: '25em',
-  margin: '2.5em',
-  objectFit: 'cover'
-};
-
 const flexContainer = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   marginBottom: '2em',
+  width: '100%',  
 };
 
 const conditionsData = [
@@ -122,10 +115,31 @@ const conditionsData = [
 ];
 
 export default function ConditionsContent() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const imageSize = windowWidth <= 768 ? { width: '15em', height: '15em', margin: '1.5em', objectFit: 'cover' } : { width: '25em', height: '25em', margin: '2.5em', objectFit: 'cover' };
+
   return (
     <div style={containerStyles}>
       {conditionsData.map((condition, index) => (
-        <div key={index} style={{ ...flexContainer, flexDirection: index % 2 === 0 ? 'row-reverse' : 'row' }}>
+        <div
+          key={index}
+          style={{
+            ...flexContainer,
+            flexDirection: windowWidth <= 768 ? 'column' : index % 2 === 0 ? 'row-reverse' : 'row',
+            alignItems: windowWidth <= 768 ? 'center' : 'center',  
+            justifyContent: windowWidth <= 768 ? 'center' : 'flex-start',
+          }}
+        >
           {condition.image && (
             <img
               src={condition.image}
