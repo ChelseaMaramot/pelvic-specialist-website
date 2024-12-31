@@ -10,6 +10,7 @@ export default function Contact() {
 
   const [mapHeight, setMapHeight] = useState(0);
   const contactContainerRef = useRef(null);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -142,34 +143,48 @@ export default function Contact() {
     }));
   };
 
+
+
   const handleSubmit = (e) => {
-
-    console.log("in hanlde submit")
-    console.log(emailServiceId, emailTemplateId, userId);
-    console.log(formData);
-
     e.preventDefault();
+  
+    const { firstName, lastName, email, phone, message } = formData;
+    const newErrors = {};
+  
+    if (!firstName) newErrors.firstName = 'First name is required';
+    if (!lastName) newErrors.lastName = 'Last name is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!phone) newErrors.phone = 'Phone is required';
+    if (!message) newErrors.message = 'Message is required';
+  
+    // If there are errors, display them and stop form submission
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
-    emailjs   
-    .sendForm(emailServiceId, emailTemplateId, e.target, userId)
-    .then(
-      (result) => {
-        console.log('Message sent successfully:', result.text);
-        alert('Message sent successfully!');
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          message: '',
-        }); 
-      },
-      (error) => {
-        console.error('Error sending message:', error);
-        alert('Failed to send message. Please try again.');
-      }
-    )
+    setErrors({});
+  
+    emailjs.sendForm(emailServiceId, emailTemplateId, e.target, userId)
+      .then(
+        (result) => {
+          console.log('Message sent successfully:', result.text);
+          alert('Message sent successfully!');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            message: '',
+          });
+        },
+        (error) => {
+          console.error('Error sending message:', error);
+          alert('Failed to send message. Please try again.');
+        }
+      );
   };
+  
 
   return (
     <div id="location" style={styles.containerStyles}>
@@ -220,6 +235,8 @@ export default function Contact() {
                   value={formData.firstName}
                   onChange={handleChange}
                   sx={styles.formField}
+                  error={!!errors.firstName}  
+                  helperText={errors.firstName} 
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -231,6 +248,8 @@ export default function Contact() {
                   value={formData.lastName}
                   onChange={handleChange}
                   sx={styles.formField}
+                  error={!!errors.lastName}  
+                  helperText={errors.lastName}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -242,6 +261,9 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   sx={styles.formField}
+                  error={!!errors.email}  
+                  helperText={errors.email}
+           
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -253,6 +275,8 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   sx={styles.formField}
+                  error={!!errors.phone}  
+                  helperText={errors.phone} 
                 />
               </Grid>
               <Grid item xs={12}>
@@ -266,6 +290,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   sx={styles.formField}
+                  error={!!errors.message} 
+                  helperText={errors.message} 
                 />
               </Grid>
             </Grid>
