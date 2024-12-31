@@ -78,16 +78,19 @@ export default function Footer() {
   ];
 
   const handlePageSelect = (page) => {
-    const element = document.getElementById(page.toLowerCase());
+    const sectionId = page.toLowerCase();
+    const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = document.querySelector('header')?.offsetHeight || 0;
       window.scrollTo({
         top: element.offsetTop - navbarHeight, 
         behavior: 'smooth',
       });
-    }
+    } else if (window.location.pathname === '/conditions') {
+      window.location.href = `/#${sectionId}`
+  }
   };
-
+  
   return (
     <footer style={footerStyles}>
       <div style={curvedDivStyles}></div>
