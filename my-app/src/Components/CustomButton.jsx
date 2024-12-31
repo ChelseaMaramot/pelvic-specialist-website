@@ -40,11 +40,12 @@ const outlinedButtonStyles = {
   },
 };
 
-const CustomButton = ({ text, onClick, variant = 'contained' }) => {
+const CustomButton = ({ type='button', text, onClick, variant = 'contained' }) => {
   const buttonStyles = variant === 'outlined' ? outlinedButtonStyles : containedButtonStyles;
 
   return (
     <Button
+      type={type}
       variant={variant}
       sx={{
         ...buttonStyles,

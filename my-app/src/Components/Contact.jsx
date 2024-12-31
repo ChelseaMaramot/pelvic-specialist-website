@@ -143,25 +143,32 @@ export default function Contact() {
   };
 
   const handleSubmit = (e) => {
+
+    console.log("in hanlde submit")
+    console.log(emailServiceId, emailTemplateId, userId);
+    console.log(formData);
+
     e.preventDefault();
 
-    emailjs
-    .sendForm(
-      emailServiceId,   
-      emailTemplateId, 
-      e.target,                                   
-      userId
-    )
+    emailjs   
+    .sendForm(emailServiceId, emailTemplateId, e.target, userId)
     .then(
       (result) => {
         console.log('Message sent successfully:', result.text);
         alert('Message sent successfully!');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: '',
+        }); 
       },
       (error) => {
-        console.log('Error sending message:', error.text);
+        console.error('Error sending message:', error);
         alert('Failed to send message. Please try again.');
       }
-    );
+    )
   };
 
   return (
