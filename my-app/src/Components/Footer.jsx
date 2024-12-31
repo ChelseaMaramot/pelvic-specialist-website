@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../Assets/logo.png";
 
 const footerStyles = {
@@ -68,6 +68,8 @@ const contactInfoStyles = {
 };
 
 export default function Footer() {
+  const [hovered, setHovered] = useState(null);
+
   // Navigation links
   const navLinks = [
     { label: "Home", id: "Home" },
@@ -87,10 +89,10 @@ export default function Footer() {
         behavior: 'smooth',
       });
     } else if (window.location.pathname === '/conditions') {
-      window.location.href = `/#${sectionId}`
-  }
+      window.location.href = `/#${sectionId}`;
+    }
   };
-  
+
   return (
     <footer style={footerStyles}>
       <div style={curvedDivStyles}></div>
@@ -117,11 +119,16 @@ export default function Footer() {
               <a
                 key={link.id}
                 href={`#${link.id.toLowerCase()}`}
-                style={linkStyles}
+                style={{
+                  ...linkStyles,
+                  color: hovered === link.id ? '#8447E9' : "#fff",
+                }}
                 onClick={(e) => {
                   e.preventDefault();
                   handlePageSelect(link.id);
                 }}
+                onMouseEnter={() => setHovered(link.id)} 
+                onMouseLeave={() => setHovered(null)} 
               >
                 {link.label}
               </a>
