@@ -56,7 +56,7 @@ const navbarStyles = {
     justifyContent: 'flex-end',
   },
   logo: {
-    height: '65px',
+    height: '85px',
     marginRight: '1.5rem',
     cursor: 'pointer'
   },
