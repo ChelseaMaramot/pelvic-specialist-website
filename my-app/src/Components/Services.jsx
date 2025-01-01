@@ -6,7 +6,7 @@ import CustomButton from './CustomButton';
 
 const conditions = [
   { id: 1, icon: accupunctureIcon, label: 'Accupuncture' , desc: "Contemporary acupuncture is when small, thin needles are inserted into various points in the body, which stimulates the nervous system to release chemicals in the brain, spinal cord and muscles. These chemicals will change the experience of pain, or they will trigger the release of other chemicals and hormones which influence the body's own internal regulating system. This stimulates the body's natural healing abilities and promotes physical and emotional well-being"},
-  { id: 2, icon: exerciseIcon, label: 'Exercise Education', desc: "Individualized exercises to address the specific strengthening and stretching need to help meet your goals, and this could be focused on pre or post pregnancy."},
+  { id: 2, icon: exerciseIcon, label: 'Exercise Education', desc: "Individualized exercises to address the specific strengthening and stretching need to help meet your goals, and this could be focused on pre or post pregnancy. Exercises could also be focused on other injuries related to muscle or  joints."},
 ];
 
 export default function Services() {
