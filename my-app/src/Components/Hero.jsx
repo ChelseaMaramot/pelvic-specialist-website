@@ -66,8 +66,7 @@ export default function Hero() {
         to Thrive
       </div>
       <div style={subTextStyles}>
-        Compassionate care for pelvic floor conditions, helping you regain confidence and live pain
-        free
+      Compassionate care for pelvic floor conditions & musculoskeletal injuries, helping you regrain confidence and live pain free. 
       </div>
       <div style={buttonContainerStyles}>
         <CustomButton text={'Request an Appointment'} onClick={handleAppointmentClick} />
