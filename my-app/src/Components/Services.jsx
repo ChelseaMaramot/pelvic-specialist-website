@@ -1,12 +1,28 @@
 import React from 'react';
 import accupunctureIcon from '../Assets/accupuncture.png';
 import exerciseIcon from '../Assets/exercise.png';
+import therapyIcon from '../Assets/therapy.png';
 import CustomButton from './CustomButton';
 
-
 const conditions = [
-  { id: 1, icon: accupunctureIcon, label: 'Accupuncture' , desc: "Contemporary acupuncture is when small, thin needles are inserted into various points in the body, which stimulates the nervous system to release chemicals in the brain, spinal cord and muscles. These chemicals will change the experience of pain, or they will trigger the release of other chemicals and hormones which influence the body's own internal regulating system. This stimulates the body's natural healing abilities and promotes physical and emotional well-being"},
-  { id: 2, icon: exerciseIcon, label: 'Exercise Education', desc: "Individualized exercises to address the specific strengthening and stretching need to help meet your goals, and this could be focused on pre or post pregnancy. Exercises could also be focused on other injuries related to muscle or  joints."},
+  {
+    id: 1,
+    icon: accupunctureIcon,
+    label: 'Accupuncture',
+    desc: "Contemporary acupuncture is when small, thin needles are inserted into various points in the body, which stimulates the nervous system to release chemicals in the brain, spinal cord and muscles. These chemicals will change the experience of pain, or they will trigger the release of other chemicals and hormones which influence the body's own internal regulating system. This stimulates the body's natural healing abilities and promotes physical and emotional well-being.",
+  },
+  {
+    id: 2,
+    icon: exerciseIcon,
+    label: 'Exercise Education',
+    desc: "Individualized exercises to address the specific strengthening and stretching need to help meet your goals, and this could be focused on pre or post pregnancy. Exercises could also be focused on other injuries related to muscle or joints.",
+  },
+  {
+    id: 3,
+    icon: therapyIcon,
+    label: 'Manual treatment - Hands on assessment and treatment',
+    desc: "Manual therapy is a part of the assessment and treatment of muscle, joints, nerves and other soft tissue to help determine what structures need to be focused on.\n\nA part of manual therapy is mobilisation that physiotherapists use to decrease pain or improve joint mobility. Mobilisation is a slow oscillatory movement; however, manipulation is a small, rapid force movement. Manipulation of the joint only can be done by trained professionals. Manual therapy will be often used with education, exercise prescription and other modalities.\n\nConditions that can be treated include rotator cuff injuries, lower back pain, arthritis, tendinitis, and frozen shoulder.",
+  },
 ];
 
 export default function Services() {
@@ -103,32 +119,41 @@ export default function Services() {
   
   };
 
+
   const handleAppointmentClick = () => {
     window.location.href = 'https://pearlpelvicphysio.janeapp.com/#staff_member/1';
   };
 
-  return (
-    <div id="services" style={styles.containerStyles}>
-      <div style={styles.subContainerStyle}>
-        <div style={styles.headingContainer}>
-          <h2 style={styles.heading}>SERVICES</h2>
-        </div>
+  const renderDescription = (desc) =>
+    desc.split('\n\n').map((paragraph, index) => (
+      <p key={index} style={{ marginBottom: '1em' }}>
+        {paragraph}
+      </p>
+    ));
 
-        <div style={styles.itemContainer}>
-          {conditions.map((condition) => (
-            <div key={condition.id} style={styles.card}>
-              <img src={condition.icon} alt={condition.label} style={styles.icon} />
-              <div style={styles.textContainer}>
-                <div style={styles.label}>{condition.label}</div>
-                <p style={styles.desc}>{condition.desc}</p>
-              </div>
-        </div>
-          ))}
-        </div>
-        <div style={styles.buttonContainer}>
-          <CustomButton text="Request an Appointment" variant="contained" onClick={handleAppointmentClick}/>
+    return (
+      <div id="services" style={styles.containerStyles}>
+        <div style={styles.subContainerStyle}>
+          <div style={styles.headingContainer}>
+            <h2 style={styles.heading}>SERVICES</h2>
+          </div>
+  
+          <div style={styles.itemContainer}>
+            {conditions.map((condition) => (
+              <div key={condition.id} style={styles.card}>
+                <img src={condition.icon} alt={condition.label} style={styles.icon} />
+                <div style={styles.textContainer}>
+                  <div style={styles.label}>{condition.label}</div>
+                  <p style={styles.desc}>{renderDescription(condition.desc)}</p>
+                </div>
+          </div>
+            ))}
+          </div>
+          <div style={styles.buttonContainer}>
+            <CustomButton text="Request an Appointment" variant="contained" onClick={handleAppointmentClick}/>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+
