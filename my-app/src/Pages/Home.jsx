@@ -9,7 +9,7 @@ import Conditions from './Conditions';
 import ConditionsTreated from '../Components/ConditionsTreated';
 import Services from '../Components/Services';
 import FAQ from '../Components/FAQ';
-import Reviews from '../Components/Reviews';
+import Testimonials from '../Components/Testimonials';
 
 export default function Home() {
 
@@ -27,7 +27,7 @@ export default function Home() {
       <About />
       <ConditionsTreated />
       <Services></Services>
-      <Reviews></Reviews>
+      <Testimonials></Testimonials>
       <FAQ></FAQ>
       <Contact />
       <Footer />

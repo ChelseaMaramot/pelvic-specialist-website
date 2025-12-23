@@ -14,7 +14,7 @@ import { styled } from '@mui/system';
 
 import logo from '../Assets/logo.png';
 
-const pages = ['Home', 'About', 'Services', 'FAQ', 'Location'];
+const pages = ['Home', 'About', 'Services', 'FAQ', 'Testimonials', 'Location'];
 
 const fontStyles = {
   fontFamily: 'Montserrat, sans-serif',

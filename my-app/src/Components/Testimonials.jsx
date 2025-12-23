@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Reviews() {
+export default function Testimonials() {
   const [hasReviews, setHasReviews] = useState(false);
 
   const styles = {
@@ -33,15 +33,18 @@ export default function Reviews() {
     },
   };
 
-  // Hide unwanted SociableKit text
-  const hideWidgetHeaderStyle = `
+  // Hide unwanted SociableKit text and center rating
+  const editWidgetHeaderStyle = `
     .sk-ww-google-reviews .tutorial_link,
-    .sk-ww-google-reviews .sk-header,
-    .sk-ww-google-reviews [class*="title"],
-    .sk-ww-google-reviews [class*="header"],
     .sk-ww-google-reviews h2,
-    .sk-ww-google-reviews h3 {
+    .sk-ww-google-reviews h3,
+    .sk-post__date {
       display: none !important;
+    }
+    
+    .sk-post__rating {
+      display: flex !important;
+      justify-content: center !important;
     }
   `;
 
@@ -57,8 +60,8 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section className="google-reviews-section" style={styles.containerStyles}>
-      <style>{hideWidgetHeaderStyle}</style>
+    <section id="testimonials" className="google-reviews-section" style={styles.containerStyles}>
+      <style>{editWidgetHeaderStyle}</style>
       <div style={styles.subContainerStyle}>
         <div style={styles.headingContainer}>
           <h2 style={styles.heading}>WHAT OUR CLIENTS SAY</h2>
