@@ -75,8 +75,8 @@ export default function Footer() {
     { label: "Home", id: "Home" },
     { label: "About", id: "About" },
     { label: "Services", id: "Services" },
-    { label: "FAQ", id: "FAQ" },
     { label: "Testimonials", id: "Testimonials" },
+    { label: "FAQ", id: "FAQ" },
     { label: "Contact", id: "Contact" },
   ];
 
