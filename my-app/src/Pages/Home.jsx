@@ -9,6 +9,7 @@ import Conditions from './Conditions';
 import ConditionsTreated from '../Components/ConditionsTreated';
 import Services from '../Components/Services';
 import FAQ from '../Components/FAQ';
+import Testimonials from '../Components/Testimonials';
 
 export default function Home() {
 
@@ -26,6 +27,7 @@ export default function Home() {
       <About />
       <ConditionsTreated />
       <Services></Services>
+      <Testimonials></Testimonials>
       <FAQ></FAQ>
       <Contact />
       <Footer />
