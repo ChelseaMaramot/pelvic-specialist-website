@@ -8,11 +8,11 @@ const containerStyles = {
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
+  marginTop: '10em',
   display: 'flex',
   flexDirection: 'column',
   gap: '1em',
   padding: '0 1rem',
-  paddingTop: '10em',
   paddingBottom: '5em',
 };
 
