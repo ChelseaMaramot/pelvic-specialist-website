@@ -33,37 +33,35 @@ export default function Reviews() {
     },
   };
 
+  // Hide unwanted SociableKit text
+  const hideWidgetHeaderStyle = `
+    .sk-ww-google-reviews .tutorial_link,
+    .sk-ww-google-reviews .sk-header,
+    .sk-ww-google-reviews [class*="title"],
+    .sk-ww-google-reviews [class*="header"],
+    .sk-ww-google-reviews h2,
+    .sk-ww-google-reviews h3 {
+      display: none !important;
+    }
+  `;
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://widgets.sociablekit.com/google-reviews/widget.js";
     script.defer = true;
     document.body.appendChild(script);
 
-    const observer = new MutationObserver(() => {
-      const widget = document.querySelector(".sk-ww-google-reviews");
-      if (widget && widget.querySelector(".sk-review")) {
-        setHasReviews(true);
-      }
-    });
-
-    const widget = document.querySelector(".sk-ww-google-reviews");
-    if (widget) {
-      observer.observe(widget, { childList: true, subtree: true });
-    }
-
     return () => {
       document.body.removeChild(script);
-      observer.disconnect();
     };
   }, []);
 
-  if (!hasReviews) return null;
-
   return (
     <section className="google-reviews-section" style={styles.containerStyles}>
+      <style>{hideWidgetHeaderStyle}</style>
       <div style={styles.subContainerStyle}>
         <div style={styles.headingContainer}>
-          <h2 style={styles.heading}>WHAT OUR PATIENTS SAY</h2>
+          <h2 style={styles.heading}>WHAT OUR CLIENTS SAY</h2>
         </div>
         <div className="sk-ww-google-reviews" data-embed-id="25568915"></div>
       </div>
